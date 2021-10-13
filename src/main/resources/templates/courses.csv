@@ -1,0 +1,3 @@
+Course, Student Name, Average Grade
+[# th:each="course : ${courseMap}"][# th:each="student : ${course.value}"][# th:each="studentCourse : ${student.course}"][# th:if="${studentCourse.name} == ${course.key}"][(${course.key})],[(${student.firstName})] [(${student.lastName})], [(${studentCourse.averageGrade})]
+[/][/][/][/]

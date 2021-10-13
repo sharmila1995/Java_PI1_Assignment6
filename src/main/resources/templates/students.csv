@@ -1,0 +1,6 @@
+Student Name, Course, Assignment, Date, Grade
+[# th:each="student : ${students}"]
+[# th:each="course : ${student.course}"]
+[# th:each="assignment : ${course.assignment}"]
+[(${student.firstName})] [(${student.lastName})],[(${course.name})],[(${assignment.name})],[(${assignment.assignmentDate})],[(${assignment.grade})]
+[/][/][/]
