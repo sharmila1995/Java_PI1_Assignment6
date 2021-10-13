@@ -102,8 +102,7 @@ public class StudentsCsvUseCase {
 
         student1.setCourse(List.of(calculusKent, advancedJavaKent));
         student2.setCourse(List.of(calculusNorville, java101Norville));
-        List<Student> students = List.of(student1, student2);
-        return students;
+        return List.of(student1, student2);
     }
 
     public String getStudentsAsCsv() {
@@ -121,15 +120,15 @@ public class StudentsCsvUseCase {
         Map<String, List<Student>> courseMap = new HashMap<>();
         for (Student iteratestudents : students){
             List<Course> courseList = iteratestudents.getCourse();
-            for (int i=0; i<courseList.size(); i++){
+            for (Course course : courseList) {
                 List<Student> mapStudents;
-                if(courseMap.containsKey(courseList.get(i).getName())){
-                    mapStudents = courseMap.get(courseList.get(i).getName());
-                }else{
+                if (courseMap.containsKey(course.getName())) {
+                    mapStudents = courseMap.get(course.getName());
+                } else {
                     mapStudents = new ArrayList<>();
                 }
                 mapStudents.add(iteratestudents);
-                courseMap.put(courseList.get(i).getName(), mapStudents);
+                courseMap.put(course.getName(), mapStudents);
             }
         }
 
@@ -138,6 +137,5 @@ public class StudentsCsvUseCase {
         context.setVariable("courseMap", courseMap);
         templateEngine.process("courses", context, writer);
         return writer.toString();
-
     }
 }
